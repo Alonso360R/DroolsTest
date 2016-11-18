@@ -1,0 +1,39 @@
+
+import com.javainuse.model.Product
+
+rule "Offer for Diamond"
+	when 
+		productObject: Product(type=="diamond")
+	then
+		productObject.setDiscount(15);
+end
+
+rule "Offer for Gold"
+activation-group "Gold"
+salience 2
+	when 
+		productObject: Product(type=="gold")
+	then
+		productObject.setDiscount(productObject.getDiscount() + 5);
+		System.out.println("Offer for gold");
+end
+
+rule "Offer for Gold on Festival"
+activation-group "Gold"
+salience 1
+	when
+		productObject: Product(type=="gold") && Product(event=="sale")
+	then
+		productObject.setDiscount(productObject.getDiscount() + 5);
+		System.out.println("Offer for gold festival");
+end
+
+rule "If customer is platinum"
+no-loop true
+salience 1
+	when
+		productObject: Product(buyer=="platinum")
+	then
+		System.out.println("This is a platinum customer double the discount");
+		update(productObject)
+end

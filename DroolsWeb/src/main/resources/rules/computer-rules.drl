@@ -1,0 +1,54 @@
+//created on: 17-nov-2016
+package computer
+
+//list any import classes here.
+import com.fisi.droolsweb.to.*
+
+//declare any global variables here
+
+dialect "java"
+
+rule "Monitor no conectado"
+	when
+		monitor : MonitorTO( enciende == false, conectado == false ) && computadora : ComputadoraTO(  )
+	then
+		computadora.setProblema("Monitor desconectado - Conectarlo!");
+end
+
+rule "Cable fuente funciona en otra computadora"
+	when
+		monitor: MonitorTO( enciende == false, conectado == true, fuenteFunciona == true ) && computadora: ComputadoraTO(  )
+	then
+		computadora.setProblema("Monitor descompuesto - Cambiarlo!");
+end
+
+rule "Cable fuente no funciona en otra computadora"
+	when
+		monitor: MonitorTO( enciende == false, conectado == true, fuenteFunciona == false ) && computadora : ComputadoraTO(  )
+	then
+		computadora.setProblema("Cable fuente del monitor malogrado - Cambiarlo!");
+end
+
+
+rule "VGA Desconectado"
+	when
+		monitor: MonitorTO( enciende == true, muestraImagen == false ) && cableVga: CableVgaTO( conectado == false ) && computador: ComputadoraTO(  )
+	then
+		computador.setProblema("Cable VGA desconectado - Conectarlo!");
+end
+
+rule "VGA Malogrado"
+	when
+		MonitorTO( enciende == true, muestraImagen == false ) && cableVga: CableVgaTO( conectado == true, funciona == false ) && computador: ComputadoraTO(  )
+	then
+		computador.setProblema("Cable VGA malogrado - Cambiarlo!");
+end
+
+rule "VGA Bien"
+	when
+		monitor: MonitorTO( enciende == true, muestraImagen == false ) && cableVga: CableVgaTO( conectado == true, funciona == true ) && computador: ComputadoraTO(  )
+	then 
+		computador.setProblema("Problema con la tarjeta de video");
+end
+
+
