@@ -10,6 +10,7 @@
 
 	<properties>
 		<drools.version>6.2.0.Final</drools.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>

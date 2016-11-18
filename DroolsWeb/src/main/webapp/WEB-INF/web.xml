@@ -4,4 +4,15 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  <servlet>
+  	<servlet-name>DiagnosticoServlet</servlet-name>
+  	<display-name>DiagnosticoServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.fisi.droolsweb.controller.DiagnosticoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>DiagnosticoServlet</servlet-name>
+  	<url-pattern>/DiagnosticoServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
