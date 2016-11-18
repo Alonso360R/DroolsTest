@@ -1,0 +1,20 @@
+body{
+	font-family: 'Indie Flower', cursive;
+	font-size: 2.5rem;
+	color: rgb(204, 255, 255);
+	background: url('../../resources/images/background.jpg') no-repeat;
+	background-size: cover;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 2%;
+}
+
+.container{
+	margin-top: 5%;
+}
+
+.fadeAway{
+	display: none;
+}
